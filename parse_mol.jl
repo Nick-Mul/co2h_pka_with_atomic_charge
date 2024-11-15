@@ -88,7 +88,7 @@ function main(args)
     run(`obabel $base.xyz -omol2 -O $base.mol2`)
     atoms, bonds = read_mol2("$base.mol2")
     data = read_json("$base.property.json")
-    new_charges = first.(data["Geometry_1"]["Mulliken_Population_Analysis"]["ATOMICCHARGES"])
+    new_charges = first.(data["Geometry_1"]["MBIS_Population_Analysis"]["ATOMICCHARGES"])
     
     atoms_with_charges = add_charges(atoms, new_charges)
     output_file = "$base.mol2"
